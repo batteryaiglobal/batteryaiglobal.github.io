@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BatteryAI — Battery Intelligence Platform | 电池智能</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#0066FF;--accent:#00D4AA;--bg-dark:#0A0F1C;--bg-card:#111827;--text:#F1F5F9;--text-muted:#94A3B8;--gradient-1:linear-gradient(135deg,#0066FF 0%,#00D4AA 100%);--gradient-2:linear-gradient(135deg,#0A0F1C 0%,#1E293B 100%);--gradient-hero:linear-gradient(160deg,#0A0F1C 0%,#0D1B3E 40%,#0A1628 100%);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Inter','Noto Sans SC',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.6;}
+a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(10,15,28,0.85);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.05);padding:0 2rem;}
+nav .inner{max-width:1280px;margin:auto;display:flex;justify-content:space-between;align-items:center;height:72px;}
+nav .logo{font-size:1.6rem;font-weight:900;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.5px;}
+nav .links{display:flex;gap:1.5rem;align-items:center;}
+nav .links a{color:var(--text-muted);font-size:0.88rem;font-weight:500;text-decoration:none;transition:color .2s;}
+nav .links a:hover{color:var(--text);}
+.btn{display:inline-block;padding:0.65rem 1.6rem;border-radius:10px;font-weight:600;font-size:0.9rem;transition:all .3s;cursor:pointer;border:none;text-decoration:none!important;}
+.btn-primary{background:var(--gradient-1);color:#fff;box-shadow:0 4px 15px rgba(0,102,255,0.2);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,102,255,0.35);}
+.btn-outline{border:1px solid rgba(255,255,255,0.2);color:var(--text);background:transparent;}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+.btn-glow{background:var(--gradient-1);color:#fff;box-shadow:0 0 20px rgba(0,102,255,0.3),0 0 60px rgba(0,102,255,0.1);animation:glow 3s ease-in-out infinite alternate;}
+@keyframes glow{from{box-shadow:0 0 20px rgba(0,102,255,0.3),0 0 60px rgba(0,102,255,0.1);}to{box-shadow:0 0 30px rgba(0,212,170,0.4),0 0 80px rgba(0,212,170,0.15);}}
+.lang-btn{background:rgba(255,255,255,0.08);color:var(--text-muted);padding:0.35rem 0.9rem;border-radius:8px;font-size:0.8rem;cursor:pointer;border:1px solid rgba(255,255,255,0.1);transition:all .2s;}
+.lang-btn:hover{background:rgba(255,255,255,0.15);color:var(--text);}
+
+/* SECTIONS */
+section{padding:6rem 2rem;position:relative;}.container{max-width:1280px;margin:auto;}
+.stitle{text-align:center;margin-bottom:3.5rem;}.stitle h2{font-size:2.4rem;font-weight:800;margin-bottom:0.8rem;letter-spacing:-0.5px;}.stitle p{color:var(--text-muted);font-size:1.1rem;max-width:700px;margin:0 auto;}
+.stitle .badge{display:inline-block;background:rgba(0,102,255,0.15);color:var(--primary);padding:0.3rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:600;margin-bottom:1rem;letter-spacing:0.5px;}
+
+/* HERO */
+.hero{padding:0;min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--gradient-hero);}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1920&q=80') center/cover;opacity:0.06;}
+.hero::after{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(0,102,255,0.15) 0%,transparent 70%);border-radius:50%;}
+.hero .content{max-width:1280px;margin:0 auto;padding:8rem 2rem 6rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1;}
+.hero .text{}.hero .visual{position:relative;}
+.hero .overline{display:inline-block;background:rgba(0,212,170,0.15);color:var(--accent);padding:0.4rem 1.2rem;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:1.5rem;letter-spacing:0.5px;}
+.hero h1{font-size:3.5rem;font-weight:900;line-height:1.15;margin-bottom:1.5rem;letter-spacing:-1px;}
+.hero h1 .hl{background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero .desc{font-size:1.15rem;color:var(--text-muted);margin-bottom:2.5rem;line-height:1.8;}
+.hero .cta{display:flex;gap:1rem;margin-bottom:3rem;}
+.hero .trust{display:flex;gap:2.5rem;flex-wrap:wrap;}
+.hero .trust-item{}.hero .trust-item .num{font-size:2rem;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero .trust-item .label{font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;}
+.hero .img-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.hero .img-card{border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--bg-card);border:1px solid rgba(255,255,255,0.05);}
+.hero .img-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.hero .img-card:hover img{transform:scale(1.05);}
+.hero .img-card .overlay{position:absolute;bottom:0;left:0;right:0;padding:0.8rem;background:linear-gradient(transparent,rgba(0,0,0,0.8));font-size:0.8rem;font-weight:600;}
+.hero .img-card.featured{grid-column:span 2;aspect-ratio:16/7;}
+
+/* LOGO BAR */
+.logo-bar{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);padding:2.5rem 2rem;text-align:center;}
+.logo-bar p{color:var(--text-muted);font-size:0.85rem;margin-bottom:1.2rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;}
+.logo-bar .logos{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;opacity:0.4;font-size:1.3rem;font-weight:700;color:var(--text-muted);}
+
+/* CARDS */
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem;}
+.card{background:var(--bg-card);border:1px solid rgba(255,255,255,0.05);border-radius:20px;padding:2rem;transition:all .4s;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-1);opacity:0;transition:opacity .3s;}
+.card:hover{border-color:rgba(0,102,255,0.2);transform:translateY(-6px);box-shadow:0 25px 50px rgba(0,0,0,0.3);}
+.card:hover::before{opacity:1;}
+.card .icon{font-size:2.5rem;margin-bottom:1rem;}.card h3{font-size:1.15rem;margin-bottom:0.8rem;font-weight:700;}
+.card p{color:var(--text-muted);font-size:0.9rem;line-height:1.7;}.card .price{margin-top:1.2rem;font-size:1.1rem;font-weight:700;color:var(--accent);}
+.card .img-top{margin:-2rem -2rem 1.5rem;height:180px;overflow:hidden;}
+.card .img-top img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.card:hover .img-top img{transform:scale(1.08);}
+
+/* FEATURES */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.feature{display:flex;gap:1.2rem;align-items:flex-start;padding:1.8rem;background:rgba(255,255,255,0.02);border-radius:16px;border:1px solid rgba(255,255,255,0.05);transition:all .3s;}
+.feature:hover{background:rgba(255,255,255,0.04);border-color:rgba(0,102,255,0.15);}
+.feature .num{font-size:1.3rem;font-weight:900;color:var(--primary);min-width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(0,102,255,0.1);border-radius:10px;}
+.feature h4{font-size:1rem;margin-bottom:0.3rem;font-weight:600;}.feature p{font-size:0.85rem;color:var(--text-muted);}
+
+/* MARKETPLACE */
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.mp-card{background:var(--bg-card);border-radius:20px;padding:2.5rem;border:1px solid rgba(255,255,255,0.05);position:relative;overflow:hidden;}
+.mp-card.client{border-color:rgba(0,212,170,0.15);}
+.mp-card.client::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),transparent);}
+.mp-card.partner{border-color:rgba(0,102,255,0.15);}
+.mp-card.partner::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),transparent);}
+.mp-card h3{font-size:1.25rem;margin-bottom:1.5rem;font-weight:700;}
+.mp-card .list{color:var(--text-muted);font-size:0.95rem;line-height:2.2;}
+
+/* FLOW */
+.flow{display:flex;justify-content:center;gap:0.6rem;flex-wrap:wrap;align-items:center;}
+.flow-step{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:1.5rem;width:180px;text-align:center;transition:all .3s;}
+.flow-step:hover{background:rgba(0,102,255,0.05);border-color:rgba(0,102,255,0.15);}
+.flow-step .emoji{font-size:2rem;margin-bottom:0.5rem;}.flow-step .ft{font-weight:700;margin:0.3rem 0;font-size:0.9rem;}.flow-step .fd{font-size:0.78rem;color:var(--text-muted);}
+.flow-arrow{font-size:1.3rem;color:var(--accent);opacity:0.6;}
+.tag{padding:0.5rem 1.2rem;border-radius:20px;font-size:0.88rem;display:inline-block;margin:0.3rem;font-weight:500;}
+.tag-a{background:rgba(0,102,255,0.12);color:#6EA8FF;}.tag-b{background:rgba(0,212,170,0.12);color:var(--accent);}
+
+/* PHOTO SECTION */
+.photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;}
+.photo-item{border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--bg-card);border:1px solid rgba(255,255,255,0.05);}
+.photo-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.photo-item:hover img{transform:scale(1.08);}
+.photo-item .cap{position:absolute;bottom:0;left:0;right:0;padding:0.8rem 1rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));font-size:0.8rem;font-weight:600;}
+
+/* EXPERTS */
+.experts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5rem;}
+.expert-card{text-align:center;padding:2rem 1rem;background:var(--bg-card);border-radius:20px;border:1px solid rgba(255,255,255,0.05);transition:all .3s;}
+.expert-card:hover{border-color:rgba(0,102,255,0.15);transform:translateY(-4px);}
+.expert-card .avatar{width:72px;height:72px;border-radius:50%;background:var(--gradient-1);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:1.8rem;}
+.expert-card h4{font-size:0.95rem;margin-bottom:0.3rem;font-weight:600;}.expert-card p{font-size:0.78rem;color:var(--text-muted);}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.why-item{display:flex;gap:1.2rem;padding:2rem;background:var(--bg-card);border-radius:16px;border:1px solid rgba(255,255,255,0.05);transition:all .3s;}
+.why-item:hover{border-color:rgba(0,102,255,0.15);}
+.why-item .icon{font-size:2.2rem;min-width:50px;text-align:center;}.why-item h4{margin-bottom:0.4rem;font-weight:700;}.why-item p{font-size:0.88rem;color:var(--text-muted);line-height:1.6;}
+
+/* FORMS */
+.form-box{max-width:640px;margin:auto;background:var(--bg-card);padding:2.5rem;border-radius:20px;border:1px solid rgba(255,255,255,0.05);}
+.fg{margin-bottom:1.2rem;}.fg label{display:block;font-size:0.88rem;font-weight:500;margin-bottom:0.4rem;}
+.fg input,.fg textarea,.fg select{width:100%;padding:0.85rem 1rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;color:var(--text);font-size:0.95rem;font-family:inherit;outline:none;transition:all .3s;}
+.fg input:focus,.fg textarea:focus{border-color:var(--primary);background:rgba(0,102,255,0.05);}.fg textarea{min-height:120px;resize:vertical;}
+footer{padding:4rem 2rem;text-align:center;border-top:1px solid rgba(255,255,255,0.05);background:var(--bg-dark);}
+footer .brand{font-size:1.5rem;font-weight:900;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem;}
+footer p{color:var(--text-muted);font-size:0.85rem;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.hero .content{grid-template-columns:1fr;text-align:center;}.hero .cta,.hero .trust{justify-content:center;}.hero .visual{max-width:600px;margin:0 auto;}}
+@media(max-width:768px){.hero h1{font-size:2.2rem;}.dual,.why-grid{grid-template-columns:1fr;}.flow{flex-direction:column;}.flow-arrow{transform:rotate(90deg);}nav .links{display:none;}.photo-grid{grid-template-columns:1fr 1fr;}.grid3{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="inner">
+  <div class="logo">🔋 BatteryAI</div>
+  <div class="links">
+    <a href="#services" data-en="Services" data-cn="服务">Services</a>
+    <a href="#platform" data-en="Platform" data-cn="平台">Platform</a>
+    <a href="#marketplace" data-en="Marketplace" data-cn="服务商入驻">Marketplace</a>
+    <a href="#gallery" data-en="Projects" data-cn="项目案例">Projects</a>
+    <a href="#why" data-en="Why Us" data-cn="优势">Why Us</a>
+    <span class="lang-btn" onclick="toggleLang()" id="langToggle">中文</span>
+    <a href="#contact" class="btn btn-primary" data-en="Get Started" data-cn="立即咨询">Get Started</a>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="content">
+    <div class="text">
+      <div class="overline" data-en="⚡ AI-POWERED BATTERY CONSULTING" data-cn="⚡ AI驱动的电池行业智能咨询">⚡ AI-POWERED BATTERY CONSULTING</div>
+      <h1><span data-en="The Future of" data-cn="重新定义">The Future of</span><br><span class="hl" data-en="Battery Intelligence" data-cn="电池行业智能服务">Battery Intelligence</span></h1>
+      <p class="desc" data-en="World-class design tools, 50+ senior experts with 15+ years experience, and a verified network of 30+ consulting partners — all in one platform. From concept to gigafactory." data-cn="顶级AI设计工具，50+位15年以上资深专家，30+家认证咨询服务商 — 从概念设计到GWh级工厂，一站式智能平台。">World-class design tools, 50+ senior experts with 15+ years experience, and a verified network of 30+ consulting partners — all in one platform.</p>
+      <div class="cta">
+        <a href="#contact" class="btn btn-glow" style="padding:0.9rem 2.5rem;font-size:1.05rem;" data-en="Start Your Project →" data-cn="开始您的项目 →">Start Your Project →</a>
+        <a href="#marketplace" class="btn btn-outline" style="padding:0.9rem 2rem;font-size:1.05rem;" data-en="Join as Partner" data-cn="服务商入驻">Join as Partner</a>
+      </div>
+      <div class="trust">
+        <div class="trust-item"><div class="num">50+</div><div class="label" data-en="Senior Experts (15yr+)" data-cn="位资深专家(15年+)">Senior Experts (15yr+)</div></div>
+        <div class="trust-item"><div class="num">30+</div><div class="label" data-en="Consulting Partners" data-cn="家入驻咨询公司">Consulting Partners</div></div>
+        <div class="trust-item"><div class="num">200+</div><div class="label" data-en="Projects Delivered" data-cn="个项目交付">Projects Delivered</div></div>
+        <div class="trust-item"><div class="num">15</div><div class="label" data-en="Countries Served" data-cn="个国家服务覆盖">Countries Served</div></div>
+      </div>
+    </div>
+    <div class="visual">
+      <div class="img-grid">
+        <div class="img-card featured">
+          <img src="https://images.unsplash.com/photo-1611270629569-8b357cb88da9?w=800&q=80" alt="Battery Manufacturing Line" onerror="this.style.display='none'">
+          <div class="overlay" data-en="🏭 GWh-Scale Production Lines" data-cn="🏭 GWh级量产线">🏭 GWh-Scale Production Lines</div>
+        </div>
+        <div class="img-card">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=80" alt="Battery Cell" onerror="this.style.display='none'">
+          <div class="overlay" data-en="🔋 Cell Design" data-cn="🔋 电芯设计">🔋 Cell Design</div>
+        </div>
+        <div class="img-card">
+          <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=400&q=80" alt="Factory" onerror="this.style.display='none'">
+          <div class="overlay" data-en="🏗️ Gigafactory" data-cn="🏗️ 超级工厂">🏗️ Gigafactory</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="logo-bar">
+  <p data-en="Our experts come from industry leaders" data-cn="我们的专家来自行业头部企业">Our experts come from industry leaders</p>
+  <div class="logos">
+    <span>CATL</span><span>BYD</span><span>Panasonic</span><span>Samsung SDI</span><span>LG Energy</span><span>EVE</span><span>CALB</span><span>Gotion</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+<div class="container">
+  <div class="stitle">
+    <div class="badge" data-en="WHAT WE DO" data-cn="服务内容">WHAT WE DO</div>
+    <h2 data-en="Full-Spectrum Battery Services" data-cn="全链条电池技术服务">Full-Spectrum Battery Services</h2>
+    <p data-en="From cell chemistry to gigafactory commissioning — every step covered by AI tools and expert knowledge" data-cn="从电芯化学体系到GWh工厂投产 — AI工具+专家知识覆盖每一步">From cell chemistry to gigafactory commissioning — every step covered</p>
+  </div>
+  <div class="grid3">
+    <div class="card">
+      <div class="img-top"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=80" alt="Cell Design" onerror="this.parentElement.style.display='none'"></div>
+      <h3 data-en="Cell Design & Engineering" data-cn="电芯设计与工程">Cell Design & Engineering</h3>
+      <p data-en="AI-optimized electrode design across 9 chemistry systems. Stacking/winding analysis, N/P ratio, energy density maximization — results in seconds, not weeks." data-cn="9大化学体系AI优化极片设计，叠片/卷绕分析，N-P比优化，能量密度最大化 — 秒级出结果。">AI-optimized electrode design across 9 chemistry systems. Results in seconds.</p>
+      <div class="price" data-en="From $5,000" data-cn="¥3万起">From $5,000</div>
+    </div>
+    <div class="card">
+      <div class="img-top"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" alt="Manufacturing" onerror="this.parentElement.style.display='none'"></div>
+      <h3 data-en="Production Line & Investment" data-cn="产线规划与投资分析">Production Line & Investment</h3>
+      <p data-en="19+ equipment categories, vendor benchmarking, takt time optimization, bottleneck analysis, full investment model with ¥/kWh unit economics." data-cn="19+类设备选型，供应商对标，节拍优化，瓶颈分析，¥/kWh单位经济性全模型。">19+ equipment types, vendor benchmarking, full investment model.</p>
+      <div class="price" data-en="From $15,000" data-cn="¥10万起">From $15,000</div>
+    </div>
+    <div class="card">
+      <div class="img-top"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Cost" onerror="this.parentElement.style.display='none'"></div>
+      <h3 data-en="Cost Intelligence & Optimization" data-cn="成本智能分析与降本">Cost Intelligence & Optimization</h3>
+      <p data-en="Real-time BOM engine with 60+ materials pricing database. Manufacturing cost modeling, sensitivity analysis, VA/VE roadmaps." data-cn="60+材料实时价格库，BOM自动计算，制造成本建模，敏感性分析，VA/VE降本路线。">Real-time BOM engine, 60+ materials, VA/VE roadmaps.</p>
+      <div class="price" data-en="From $3,000" data-cn="¥2万起">From $3,000</div>
+    </div>
+    <div class="card">
+      <div class="img-top"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Factory" onerror="this.parentElement.style.display='none'"></div>
+      <h3 data-en="Gigafactory Construction" data-cn="超级工厂建设全案">Gigafactory Construction</h3>
+      <p data-en="Plant layout, 12 utility subsystems, Class 1K/10K cleanroom, dry room engineering. Full construction gate reviews (G1-G8). Turnkey solutions via our partner network." data-cn="厂房布局，12大公辅系统，千级/万级洁净工程，干燥房设计。G1-G8建设Gate Review。服务商网络交钥匙方案。">Plant, cleanroom, utilities, gate reviews. Turnkey via partners.</p>
+      <div class="price" data-en="From $30,000" data-cn="¥20万起">From $30,000</div>
+    </div>
+    <div class="card">
+      <div class="img-top"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80" alt="Quality" onerror="this.parentElement.style.display='none'"></div>
+      <h3 data-en="Quality & NPI Management" data-cn="质量体系与NPI管理">Quality & NPI Management</h3>
+      <p data-en="IATF 16949 compliant NPI system: 4 gates, 98 checkpoints. Equipment development S01-S09. Complete PPAP/APQP deliverables." data-cn="IATF16949合规NPI体系：4个Gate 98项检查点，设备开发S01-S09，完整PPAP/APQP交付物。">IATF 16949, 98 checkpoints, PPAP/APQP, S01-S09.</p>
+      <div class="price" data-en="From $10,000" data-cn="¥8万起">From $10,000</div>
+    </div>
+    <div class="card">
+      <div class="img-top"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80" alt="Training" onerror="this.parentElement.style.display='none'"></div>
+      <h3 data-en="Expert Training Programs" data-cn="专家级培训体系">Expert Training Programs</h3>
+      <p data-en="Customized training by industry veterans: cell design, process engineering, equipment management, quality systems. Certifications included." data-cn="行业资深专家定制培训：电芯设计/工艺/设备/质量体系，含考核认证。">Customized by industry veterans. Certifications included.</p>
+      <div class="price" data-en="From $3,000/day" data-cn="¥2万起/天">From $3,000/day</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PLATFORM -->
+<section id="platform" style="background:var(--gradient-2);">
+<div class="container">
+  <div class="stitle">
+    <div class="badge" data-en="AI PLATFORM" data-cn="AI平台">AI PLATFORM</div>
+    <h2 data-en="The BatteryAI Engine" data-cn="BatteryAI 智能引擎">The BatteryAI Engine</h2>
+    <p data-en="The industry's only full-chain intelligent design & planning platform — from cell chemistry to factory economics in one click" data-cn="行业唯一全链条智能设计平台 — 从电芯化学体系到工厂经济性，一键生成">The industry's only full-chain platform</p>
+  </div>
+  <div class="features">
+    <div class="feature"><div class="num">01</div><div><h4 data-en="Cell Design Calculator" data-cn="电芯设计计算器">Cell Design Calculator</h4><p data-en="9 chemistries, auto electrode sizing, layer count, energy density optimization" data-cn="9大化学体系，自动极片设计/层数计算/能量密度优化">9 chemistries, auto sizing, energy density optimization</p></div></div>
+    <div class="feature"><div class="num">02</div><div><h4 data-en="BOM & Cost Engine" data-cn="BOM成本引擎">BOM & Cost Engine</h4><p data-en="60+ materials with live pricing, 3-tier cost analysis, industry benchmarks" data-cn="60+材料实时价格，三档成本分析，行业基准对标">60+ materials, live pricing, benchmarks</p></div></div>
+    <div class="feature"><div class="num">03</div><div><h4 data-en="Process Intelligence" data-cn="工艺智能分析">Process Intelligence</h4><p data-en="22-step flow, takt time optimization, bottleneck detection, yield modeling" data-cn="22道工序，节拍优化，瓶颈检测，良率建模">22 steps, takt time, bottleneck, yield</p></div></div>
+    <div class="feature"><div class="num">04</div><div><h4 data-en="Investment Modeler" data-cn="投资测算模型">Investment Modeler</h4><p data-en="19 equipment types, vendor DB, headcount, ¥/kWh unit economics, ROI analysis" data-cn="19类设备，供应商库，人力配置，¥/kWh单位经济性，ROI分析">Equipment, vendors, headcount, ROI</p></div></div>
+    <div class="feature"><div class="num">05</div><div><h4 data-en="Factory Planner" data-cn="工厂规划引擎">Factory Planner</h4><p data-en="11 building types, 12 utility systems, cleanroom specs, construction timeline" data-cn="11类建筑，12大公辅系统，洁净标准，建设周期">Buildings, utilities, cleanroom, timeline</p></div></div>
+    <div class="feature"><div class="num">06</div><div><h4 data-en="Gate Review System" data-cn="Gate Review系统">Gate Review System</h4><p data-en="NPI 98 items + Equipment S01-S09 + Construction G1-G8 + RACI matrix" data-cn="NPI 98项 + 设备S01-S09 + 建设G1-G8 + RACI矩阵">NPI + Equipment + Construction gates</p></div></div>
+    <div class="feature"><div class="num">07</div><div><h4 data-en="Industry Database" data-cn="行业数据库">Industry Database</h4><p data-en="318 product BOMs, 113 formulas, equipment vendor pricing, material specs" data-cn="318款产品BOM，113条配方，设备供应商报价，材料规格">318 BOMs, 113 formulas, vendor data</p></div></div>
+    <div class="feature"><div class="num">08</div><div><h4 data-en="Scenario Comparator" data-cn="多方案对比器">Scenario Comparator</h4><p data-en="Side-by-side chemistry, format, process route comparison with sensitivity analysis" data-cn="化学体系/形态/工艺路线并排对比+敏感性分析">Chemistry, format, route comparison</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- MARKETPLACE -->
+<section id="marketplace" style="background:linear-gradient(160deg,#0A1628 0%,#162040 50%,#0D1B3E 100%);">
+<div class="container">
+  <div class="stitle">
+    <div class="badge" data-en="ECOSYSTEM" data-cn="生态平台">ECOSYSTEM</div>
+    <h2 data-en="Consulting Partner Marketplace" data-cn="咨询服务商生态平台">Consulting Partner Marketplace</h2>
+    <p data-en="The industry's first open platform connecting battery clients with 30+ verified consulting firms across 8 service categories" data-cn="电池行业首个开放平台 — 30+家认证咨询公司，覆盖8大服务类别，智能匹配精准对接">The industry's first open platform — 30+ verified firms, 8 categories</p>
+  </div>
+  <div class="dual" style="margin-bottom:3rem;">
+    <div class="mp-card client">
+      <h3 style="color:var(--accent);" data-en="🔍 For Clients" data-cn="🔍 客户端">🔍 For Clients</h3>
+      <div class="list">
+        <p>✅ <strong data-en="One platform, 30+ verified firms" data-cn="一个平台，30+家认证服务商">One platform, 30+ verified firms</strong></p>
+        <p>✅ <strong data-en="AI smart matching" data-cn="AI智能匹配">AI smart matching</strong> — <span data-en="best-fit partner in 24 hours" data-cn="24小时推荐最佳服务商">best-fit partner in 24 hours</span></p>
+        <p>✅ <strong data-en="Free AI pre-analysis" data-cn="免费AI预分析">Free AI pre-analysis</strong> — <span data-en="design & cost report before signing" data-cn="签约前获得设计与成本报告">design & cost report before signing</span></p>
+        <p>✅ <strong data-en="Quality guarantee" data-cn="质量保障">Quality guarantee</strong> — <span data-en="independent technical oversight" data-cn="独立技术督导，确保交付质量">independent technical oversight</span></p>
+        <p>✅ <strong data-en="Full coverage" data-cn="全覆盖">Full coverage</strong> — <span data-en="factory, lines, lab, certification" data-cn="建厂/建线/实验室/认证/培训">factory, lines, lab, certification</span></p>
+      </div>
+      <a href="#contact" class="btn btn-primary" style="margin-top:1.5rem;" data-en="Submit Project →" data-cn="提交项目需求 →">Submit Project →</a>
+    </div>
+    <div class="mp-card partner">
+      <h3 style="color:var(--primary);" data-en="🤝 For Consulting Firms" data-cn="🤝 咨询公司端">🤝 For Consulting Firms</h3>
+      <div class="list">
+        <p>✅ <strong data-en="Qualified client pipeline" data-cn="精准客户资源">Qualified client pipeline</strong> — <span data-en="we acquire, you deliver" data-cn="我们获客，您交付">we acquire, you deliver</span></p>
+        <p>✅ <strong data-en="Free BatteryAI tools" data-cn="免费AI工具">Free BatteryAI tools</strong> — <span data-en="enhance your proposals" data-cn="提升您的方案质量">enhance your proposals</span></p>
+        <p>✅ <strong data-en="Global exposure" data-cn="全球曝光">Global exposure</strong> — <span data-en="reach clients in 15 countries" data-cn="触达15个国家的客户">reach clients in 15 countries</span></p>
+        <p>✅ <strong data-en="Flexible model" data-cn="灵活合作">Flexible model</strong> — <span data-en="project-based, no exclusivity" data-cn="按项目合作，无排他要求">project-based, no exclusivity</span></p>
+        <p>✅ <strong data-en="Expert backing" data-cn="专家赋能">Expert backing</strong> — <span data-en="50+ experts strengthen your team" data-cn="50+专家增强您的团队实力">50+ experts strengthen your team</span></p>
+      </div>
+      <a href="#partner-apply" class="btn btn-outline" style="margin-top:1.5rem;border-color:var(--primary);color:var(--primary);" data-en="Apply to Join →" data-cn="申请入驻 →">Apply to Join →</a>
+    </div>
+  </div>
+  <div style="text-align:center;margin-bottom:3rem;">
+    <h3 style="margin-bottom:1.5rem;" data-en="How It Works" data-cn="平台运作流程">How It Works</h3>
+    <div class="flow">
+      <div class="flow-step"><div class="emoji">📋</div><div class="ft" data-en="Submit Brief" data-cn="提交需求">Submit Brief</div><div class="fd" data-en="Project scope & specs" data-cn="项目范围与规格">Project scope & specs</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="emoji">🤖</div><div class="ft" data-en="AI Analysis" data-cn="AI预分析">AI Analysis</div><div class="fd" data-en="Design, cost, feasibility" data-cn="设计/成本/可行性">Design, cost, feasibility</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="emoji">🎯</div><div class="ft" data-en="Smart Match" data-cn="智能匹配">Smart Match</div><div class="fd" data-en="2-3 best-fit partners" data-cn="推荐2-3家服务商">2-3 best-fit partners</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="emoji">🚀</div><div class="ft" data-en="Execute & Oversee" data-cn="执行+督导">Execute & Oversee</div><div class="fd" data-en="Delivery + quality control" data-cn="交付+质量把控">Delivery + quality control</div></div>
+    </div>
+  </div>
+  <div style="text-align:center;">
+    <h3 style="margin-bottom:1rem;" data-en="Partner Categories" data-cn="入驻服务类别">Partner Categories</h3>
+    <div style="display:flex;justify-content:center;gap:0.6rem;flex-wrap:wrap;">
+      <span class="tag tag-a" data-en="🏗️ Factory Construction" data-cn="🏗️ 工厂建设">🏗️ Factory Construction</span>
+      <span class="tag tag-b" data-en="🔬 Pilot Lines" data-cn="🔬 试验线">🔬 Pilot Lines</span>
+      <span class="tag tag-a" data-en="🏭 Mass Production" data-cn="🏭 量产线">🏭 Mass Production</span>
+      <span class="tag tag-b" data-en="🧪 Lab & R&D" data-cn="🧪 实验室">🧪 Lab & R&D</span>
+      <span class="tag tag-a" data-en="📋 Quality & Cert" data-cn="📋 质量认证">📋 Quality & Cert</span>
+      <span class="tag tag-b" data-en="📊 Supply Chain" data-cn="📊 供应链">📊 Supply Chain</span>
+      <span class="tag tag-a" data-en="🎓 Training" data-cn="🎓 培训">🎓 Training</span>
+      <span class="tag tag-b" data-en="⚡ Equipment" data-cn="⚡ 设备集成">⚡ Equipment</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+<div class="container">
+  <div class="stitle">
+    <div class="badge" data-en="PROJECT GALLERY" data-cn="项目案例">PROJECT GALLERY</div>
+    <h2 data-en="From Our Portfolio" data-cn="项目实景展示">From Our Portfolio</h2>
+    <p data-en="Real projects delivered by BatteryAI and our partner network" data-cn="BatteryAI及合作伙伴网络交付的真实项目">Real projects by BatteryAI and our partner network</p>
+  </div>
+  <div class="photo-grid">
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1611270629569-8b357cb88da9?w=500&q=80" alt="Production" onerror="this.style.display='none'"><div class="cap" data-en="Electrode Coating Line" data-cn="极片涂布产线">Electrode Coating Line</div></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&q=80" alt="Battery" onerror="this.style.display='none'"><div class="cap" data-en="Prismatic Cell Assembly" data-cn="方壳电芯组装">Prismatic Cell Assembly</div></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=500&q=80" alt="Factory" onerror="this.style.display='none'"><div class="cap" data-en="10GWh Gigafactory" data-cn="10GWh超级工厂">10GWh Gigafactory</div></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&q=80" alt="Lab" onerror="this.style.display='none'"><div class="cap" data-en="R&D Laboratory" data-cn="研发实验室">R&D Laboratory</div></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&q=80" alt="Construction" onerror="this.style.display='none'"><div class="cap" data-en="Factory Construction" data-cn="厂房建设现场">Factory Construction</div></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&q=80" alt="Cells" onerror="this.style.display='none'"><div class="cap" data-en="Cell Formation Room" data-cn="电芯化成车间">Cell Formation Room</div></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500&q=80" alt="Cleanroom" onerror="this.style.display='none'"><div class="cap" data-en="Cleanroom Environment" data-cn="洁净车间环境">Cleanroom Environment</div></div>
+    <div class="photo-item"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&q=80" alt="Testing" onerror="this.style.display='none'"><div class="cap" data-en="Battery Testing Lab" data-cn="电池测试实验室">Battery Testing Lab</div></div>
+  </div>
+</div>
+</section>
+
+<!-- EXPERTS -->
+<section id="experts" style="background:var(--gradient-2);">
+<div class="container">
+  <div class="stitle">
+    <div class="badge" data-en="EXPERT NETWORK" data-cn="专家网络">EXPERT NETWORK</div>
+    <h2 data-en="50+ Industry Veterans at Your Service" data-cn="50+位行业资深专家为您服务">50+ Industry Veterans at Your Service</h2>
+    <p data-en="Average 15+ years experience from Tier-1 battery companies worldwide" data-cn="平均15年以上经验，来自全球一线电池企业">Average 15+ years from Tier-1 battery companies</p>
+  </div>
+  <div class="experts-grid">
+    <div class="expert-card"><div class="avatar">🔬</div><h4 data-en="Cell Design" data-cn="电芯设计">Cell Design</h4><p data-en="12 experts" data-cn="12位专家">12 experts</p></div>
+    <div class="expert-card"><div class="avatar">⚙️</div><h4 data-en="Process" data-cn="工艺开发">Process</h4><p data-en="10 experts" data-cn="10位专家">10 experts</p></div>
+    <div class="expert-card"><div class="avatar">🏗️</div><h4 data-en="Equipment" data-cn="设备产线">Equipment</h4><p data-en="8 experts" data-cn="8位专家">8 experts</p></div>
+    <div class="expert-card"><div class="avatar">📋</div><h4 data-en="Quality" data-cn="质量体系">Quality</h4><p data-en="6 experts" data-cn="6位专家">6 experts</p></div>
+    <div class="expert-card"><div class="avatar">🏭</div><h4 data-en="Factory" data-cn="工厂建设">Factory</h4><p data-en="5 experts" data-cn="5位专家">5 experts</p></div>
+    <div class="expert-card"><div class="avatar">📊</div><h4 data-en="Supply Chain" data-cn="供应链">Supply Chain</h4><p data-en="5 experts" data-cn="5位专家">5 experts</p></div>
+    <div class="expert-card"><div class="avatar">🔋</div><h4 data-en="Materials" data-cn="材料研发">Materials</h4><p data-en="4 experts" data-cn="4位专家">4 experts</p></div>
+  </div>
+</div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+<div class="container">
+  <div class="stitle">
+    <div class="badge" data-en="WHY BATTERYAI" data-cn="为什么选我们">WHY BATTERYAI</div>
+    <h2 data-en="The Unfair Advantage" data-cn="我们的核心壁垒">The Unfair Advantage</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-item"><div class="icon">🤖</div><div><h4 data-en="AI + Human Intelligence" data-cn="AI + 人类智慧">AI + Human Intelligence</h4><p data-en="The only platform combining AI design tools with 50+ human experts. Technology handles calculation, experts handle judgment." data-cn="唯一将AI设计工具与50+人类专家结合的平台。技术负责计算，专家负责判断。">AI tools + 50+ experts. Tech calculates, experts judge.</p></div></div>
+    <div class="why-item"><div class="icon">🏪</div><div><h4 data-en="Ecosystem, Not Just Consulting" data-cn="生态平台，不仅是咨询">Ecosystem, Not Just Consulting</h4><p data-en="30+ verified consulting partners for on-site delivery. We match, they execute, we oversee — client gets the best of all worlds." data-cn="30+认证服务商负责落地交付。我们匹配+技术督导 — 客户获得全方位最优解。">30+ partners deliver. We match + oversee. Best of all worlds.</p></div></div>
+    <div class="why-item"><div class="icon">🌍</div><div><h4 data-en="Global Reach, Local Depth" data-cn="全球覆盖，本地深耕">Global Reach, Local Depth</h4><p data-en="Projects delivered across 15 countries. Deep roots in China's battery ecosystem with partners in Europe, Southeast Asia, and Middle East." data-cn="覆盖15个国家。深耕中国电池生态，服务商网络延伸至欧洲、东南亚、中东。">15 countries. China roots + global partners.</p></div></div>
+    <div class="why-item"><div class="icon">💰</div><div><h4 data-en="50% Lower, 10x Faster" data-cn="成本减半，效率10倍">50% Lower, 10x Faster</h4><p data-en="AI automation + partner network = top-tier quality at half traditional consulting cost. Preliminary designs in hours, not months." data-cn="AI自动化+服务商网络 = 顶级质量，传统成本的一半。初步方案小时级，不是月级。">AI + network = half cost, 10x speed.</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--gradient-2);">
+<div class="container">
+  <div class="stitle">
+    <h2 data-en="Start Your Project" data-cn="立即咨询">Start Your Project</h2>
+    <p data-en="Tell us your needs. Free AI pre-analysis included with every inquiry." data-cn="描述您的需求，每次咨询均含免费AI预分析报告。">Free AI pre-analysis with every inquiry.</p>
+  </div>
+  <div class="form-box">
+    <form id="contactForm">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="fg"><label data-en="Name *" data-cn="姓名 *">Name *</label><input required></div>
+        <div class="fg"><label data-en="Company *" data-cn="公司 *">Company *</label><input required></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="fg"><label data-en="Email *" data-cn="邮箱 *">Email *</label><input type="email" required></div>
+        <div class="fg"><label data-en="Phone" data-cn="电话">Phone</label><input type="tel"></div>
+      </div>
+      <div class="fg">
+        <label data-en="Service Interest *" data-cn="服务类别 *">Service Interest *</label>
+        <select required>
+          <option value="" data-en="Select..." data-cn="请选择...">Select...</option>
+          <option data-en="Cell Design" data-cn="电芯设计">Cell Design</option>
+          <option data-en="Production Line" data-cn="产线规划">Production Line</option>
+          <option data-en="Cost Analysis" data-cn="成本分析">Cost Analysis</option>
+          <option data-en="Factory Construction" data-cn="工厂建设">Factory Construction</option>
+          <option data-en="Quality System" data-cn="质量体系">Quality System</option>
+          <option data-en="Training" data-cn="技术培训">Training</option>
+          <option data-en="Full Package" data-cn="全套服务">Full Package</option>
+          <option data-en="Platform Access" data-cn="平台试用">Platform Access</option>
+          <option data-en="Other" data-cn="其他">Other</option>
+        </select>
+      </div>
+      <div class="fg"><label data-en="Project Description *" data-cn="项目描述 *">Project Description *</label><textarea required></textarea></div>
+      <button type="submit" class="btn btn-glow" style="width:100%;padding:1rem;font-size:1.05rem;" data-en="Submit & Get Free AI Analysis →" data-cn="提交咨询 (含免费AI预分析) →">Submit & Get Free AI Analysis →</button>
+    </form>
+  </div>
+</div>
+</section>
+
+<!-- PARTNER APPLICATION -->
+<section id="partner-apply">
+<div class="container">
+  <div class="stitle">
+    <div class="badge" data-en="PARTNER PROGRAM" data-cn="合作伙伴计划">PARTNER PROGRAM</div>
+    <h2 data-en="Join the BatteryAI Ecosystem" data-cn="加入BatteryAI生态">Join the BatteryAI Ecosystem</h2>
+    <p data-en="We bring qualified clients. You deliver excellence. Together, we transform the industry." data-cn="我们带来精准客户，您专注卓越交付。携手重塑行业。">We bring clients. You deliver. Together, we transform.</p>
+  </div>
+  <div class="form-box">
+    <form id="partnerForm">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="fg"><label data-en="Company *" data-cn="公司名称 *">Company *</label><input required></div>
+        <div class="fg"><label data-en="Contact *" data-cn="联系人 *">Contact *</label><input required></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="fg"><label data-en="Email *" data-cn="邮箱 *">Email *</label><input type="email" required></div>
+        <div class="fg"><label data-en="Phone *" data-cn="电话 *">Phone *</label><input type="tel" required></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="fg"><label data-en="Location *" data-cn="城市 *">Location *</label><input required></div>
+        <div class="fg"><label data-en="Size" data-cn="规模">Size</label><select><option value="">-</option><option>1-10</option><option>11-50</option><option>51-200</option><option>200+</option></select></div>
+      </div>
+      <div class="fg">
+        <label data-en="Categories *" data-cn="服务类别 *">Categories *</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;color:var(--text-muted);font-size:0.88rem;">
+          <label><input type="checkbox" style="width:auto;margin-right:0.5rem;"><span data-en="Factory Construction" data-cn="工厂建设">Factory Construction</span></label>
+          <label><input type="checkbox" style="width:auto;margin-right:0.5rem;"><span data-en="Pilot Lines" data-cn="试验线">Pilot Lines</span></label>
+          <label><input type="checkbox" style="width:auto;margin-right:0.5rem;"><span data-en="Mass Production" data-cn="量产线">Mass Production</span></label>
+          <label><input type="checkbox" style="width:auto;margin-right:0.5rem;"><span data-en="Lab & R&D" data-cn="实验室">Lab & R&D</span></label>
+          <label><input type="checkbox" style="width:auto;margin-right:0.5rem;"><span data-en="Quality & Cert" data-cn="质量认证">Quality & Cert</span></label>
+          <label><input type="checkbox" style="width:auto;margin-right:0.5rem;"><span data-en="Equipment" data-cn="设备集成">Equipment</span></label>
+          <label><input type="checkbox" style="width:auto;margin-right:0.5rem;"><span data-en="Supply Chain" data-cn="供应链">Supply Chain</span></label>
+          <label><input type="checkbox" style="width:auto;margin-right:0.5rem;"><span data-en="Training" data-cn="培训">Training</span></label>
+        </div>
+      </div>
+      <div class="fg"><label data-en="Company Intro & Projects *" data-cn="公司介绍与案例 *">Company Intro & Projects *</label><textarea required></textarea></div>
+      <div class="fg"><label data-en="Website" data-cn="官网">Website</label><input placeholder="https://..."></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;padding:1rem;font-size:1.05rem;" data-en="Submit Application →" data-cn="提交入驻申请 →">Submit Application →</button>
+    </form>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">🔋 BatteryAI</div>
+  <p data-en="Battery Intelligence Platform — AI-Powered Consulting & Partner Ecosystem" data-cn="电池智能 — AI赋能的电池行业咨询与服务商生态平台">Battery Intelligence Platform — AI-Powered Consulting & Partner Ecosystem</p>
+  <p style="margin-top:0.5rem;" data-en="50+ Experts · 30+ Partners · 15 Countries · 200+ Projects" data-cn="50+专家 · 30+合作伙伴 · 15个国家 · 200+项目">50+ Experts · 30+ Partners · 15 Countries · 200+ Projects</p>
+  <p style="margin-top:1.5rem;">© 2026 BatteryAI. All rights reserved. | <a href="mailto:contact@batteryai.com">contact@batteryai.com</a></p>
+</footer>
+
+<script>
+let currentLang='en';
+function toggleLang(){
+  currentLang=currentLang==='en'?'cn':'en';
+  document.getElementById('langToggle').textContent=currentLang==='en'?'中文':'English';
+  document.querySelectorAll('[data-en][data-cn]').forEach(el=>{el.textContent=el.getAttribute('data-'+currentLang);});
+}
+document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();alert('Thank you! We will contact you within 24 hours with a free AI pre-analysis.\n感谢咨询！24小时内回复，含免费AI预分析报告。');this.reset();});
+document.getElementById('partnerForm').addEventListener('submit',function(e){e.preventDefault();alert('Application received! Our team will review within 3 business days.\n申请已收到！3个工作日内审核。');this.reset();});
+</script>
+
+</body>
+</html>

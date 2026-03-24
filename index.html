@@ -170,9 +170,15 @@ footer p{color:var(--text-muted);font-size:0.85rem;}
     </div>
     <div class="visual">
       <div class="img-grid">
-        <div class="img-card featured">
-          <img src="https://images.unsplash.com/photo-1672624254120-ebbe190b3519?w=800&q=80" alt="Battery Manufacturing Line" onerror="this.style.display='none'">
-          <div class="overlay" data-en="🏭 GWh-Scale Production Lines" data-cn="🏭 GWh级量产线">🏭 GWh-Scale Production Lines</div>
+        <div class="img-card featured" style="position:relative;overflow:hidden;">
+          <img class="hero-slide active" src="images/hero_card1.gif" alt="Battery Production Line 1" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity 1.2s ease;">
+          <img class="hero-slide" src="images/hero_card2.png" alt="Battery Production Line 2" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;">
+          <img class="hero-slide" src="images/hero_card3.gif" alt="Battery Production Line 3" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;">
+          <img class="hero-slide" src="images/hero_card4.gif" alt="Battery Production Line 4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;">
+          <img class="hero-slide" src="images/hero_card5.gif" alt="Battery Production Line 5" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;">
+          <img class="hero-slide" src="images/hero_card6.gif" alt="Battery Production Line 6" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;">
+          <div class="overlay" data-en="🏭 GWh-Scale Production Lines" data-cn="🏭 GWh级量产线" style="position:relative;z-index:2;">🏭 GWh-Scale Production Lines</div>
+          <script>(function(){var s=document.querySelectorAll('.hero-slide'),i=0;setInterval(function(){s[i].style.opacity='0';i=(i+1)%s.length;s[i].style.opacity='1';},3000);})();</script>
         </div>
         <div class="img-card">
           <img src="https://images.unsplash.com/photo-1732030373864-d37573915751?w=400&q=80" alt="Battery Cell" onerror="this.style.display='none'">

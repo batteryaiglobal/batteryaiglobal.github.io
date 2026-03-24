@@ -319,24 +319,44 @@ footer p{color:var(--text-muted);font-size:0.85rem;}
 </div>
 </section>
 
-<!-- GALLERY -->
+<!-- PRODUCTION GALLERY -->
 <section id="gallery">
 <div class="container">
   <div class="stitle">
-    <div class="badge" data-en="PROJECT GALLERY" data-cn="项目案例">PROJECT GALLERY</div>
-    <h2 data-en="From Our Portfolio" data-cn="项目实景展示">From Our Portfolio</h2>
-    <p data-en="Real projects delivered by BatteryAI and our partner network" data-cn="BatteryAI及合作伙伴网络交付的真实项目">Real projects by BatteryAI and our partner network</p>
+    <div class="badge" data-en="PRODUCTION GALLERY" data-cn="产线实景">PRODUCTION GALLERY</div>
+    <h2 data-en="GWh-Scale Production Lines" data-cn="GWh级量产线">GWh-Scale Production Lines</h2>
+    <p data-en="From electrode manufacturing to finished cells — end-to-end production capabilities" data-cn="从极片制造到成品电芯 — 端到端的产线能力">From electrode manufacturing to finished cells</p>
   </div>
-  <div class="photo-grid">
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1672624254120-ebbe190b3519?w=500&q=80" alt="Production" onerror="this.style.display='none'"><div class="cap" data-en="Electrode Coating Line" data-cn="极片涂布产线">Electrode Coating Line</div></div>
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1732030373864-d37573915751?w=500&q=80" alt="Battery" onerror="this.style.display='none'"><div class="cap" data-en="Prismatic Cell Assembly" data-cn="方壳电芯组装">Prismatic Cell Assembly</div></div>
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1748002388689-c62b45d5c28b?w=500&q=80" alt="Factory" onerror="this.style.display='none'"><div class="cap" data-en="10GWh Gigafactory" data-cn="10GWh超级工厂">10GWh Gigafactory</div></div>
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1748002388689-c62b45d5c28b?w=500&q=80" alt="Lab" onerror="this.style.display='none'"><div class="cap" data-en="R&D Laboratory" data-cn="研发实验室">R&D Laboratory</div></div>
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1732030373864-d37573915751?w=500&q=80" alt="Construction" onerror="this.style.display='none'"><div class="cap" data-en="Factory Construction" data-cn="厂房建设现场">Factory Construction</div></div>
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1636817098062-8dbc0cf735f0?w=500&q=80" alt="Cells" onerror="this.style.display='none'"><div class="cap" data-en="Cell Formation Room" data-cn="电芯化成车间">Cell Formation Room</div></div>
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500&q=80" alt="Cleanroom" onerror="this.style.display='none'"><div class="cap" data-en="Cleanroom Environment" data-cn="洁净车间环境">Cleanroom Environment</div></div>
-    <div class="photo-item"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&q=80" alt="Testing" onerror="this.style.display='none'"><div class="cap" data-en="Battery Testing Lab" data-cn="电池测试实验室">Battery Testing Lab</div></div>
+  <div class="carousel" style="position:relative;max-width:900px;margin:0 auto;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#111827;">
+    <img class="carousel-img active" src="images/prod1.jpg" alt="Electrode Rolling Equipment" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity 1s ease;">
+    <img class="carousel-img" src="images/prod2.jpg" alt="Cell Production Line" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease;">
+    <img class="carousel-img" src="images/prod3.jpg" alt="Prismatic Battery Cells" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease;">
+    <img class="carousel-img" src="images/prod4.jpg" alt="Cleanroom Quality Control" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease;">
+    <img class="carousel-img" src="images/prod5.jpg" alt="Gigafactory Aerial View" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease;">
+    <div style="position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);display:flex;gap:0.5rem;z-index:2;">
+      <span class="dot active" style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.9);cursor:pointer;transition:all .3s;"></span>
+      <span class="dot" style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:all .3s;"></span>
+      <span class="dot" style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:all .3s;"></span>
+      <span class="dot" style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:all .3s;"></span>
+      <span class="dot" style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:all .3s;"></span>
+    </div>
+    <div class="carousel-cap" style="position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.6);padding:0.4rem 1.2rem;border-radius:20px;font-size:0.85rem;color:#fff;white-space:nowrap;z-index:2;" data-caps-en="Electrode Rolling Equipment|Cell Production Line|Prismatic Battery Cells|Cleanroom Quality Control|Gigafactory Aerial View" data-caps-cn="辊压/涂布设备|电芯产线车间|方形电芯成品|洁净室质量检测|超级工厂航拍">Electrode Rolling Equipment</div>
   </div>
+  <script>
+  (function(){
+    var imgs=document.querySelectorAll('.carousel-img'),dots=document.querySelectorAll('.dot'),cap=document.querySelector('.carousel-cap'),idx=0,len=imgs.length;
+    var capsEn=(cap.dataset.capsEn||'').split('|'),capsCn=(cap.dataset.capsCn||'').split('|');
+    function show(n){
+      imgs.forEach(function(img,i){img.style.opacity=i===n?'1':'0';});
+      dots.forEach(function(d,i){d.style.background=i===n?'rgba(255,255,255,0.9)':'rgba(255,255,255,0.3)';});
+      var isZh=document.documentElement.lang==='zh';
+      cap.textContent=(isZh?capsCn:capsEn)[n]||capsEn[n];
+      idx=n;
+    }
+    dots.forEach(function(d,i){d.addEventListener('click',function(){show(i);});});
+    setInterval(function(){show((idx+1)%len);},3000);
+  })();
+  </script>
 </div>
 </section>
 

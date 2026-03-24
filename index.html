@@ -229,7 +229,11 @@ footer p{color:var(--text-muted);font-size:0.85rem;}
       <p data-en="19+ equipment categories, vendor benchmarking, takt time optimization, bottleneck analysis, full investment model with ¥/kWh unit economics." data-cn="19+类设备选型，供应商对标，节拍优化，瓶颈分析，¥/kWh单位经济性全模型。">19+ equipment types, vendor benchmarking, full investment model.</p>
       </div>
     <div class="card">
-      <div class="img-top"><img src="images/cost_intel.jpg" alt="Cost Intelligence" onerror="this.parentElement.style.display='none'"></div>
+      <div class="img-top" style="position:relative;overflow:hidden;">
+        <img class="cost-slide active" src="images/cost1.jpg" alt="Cost Intelligence" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity 1.2s ease;">
+        <img class="cost-slide" src="images/cost2.png" alt="Cost Intelligence" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;">
+        <script>(function(){var s=document.querySelectorAll('.cost-slide'),i=0;setInterval(function(){s[i].style.opacity='0';i=(i+1)%s.length;s[i].style.opacity='1';},3000);})();</script>
+      </div>
       <h3 data-en="Cost Intelligence & Optimization" data-cn="成本智能分析与降本">Cost Intelligence & Optimization</h3>
       <p data-en="Real-time BOM engine with 60+ materials pricing database. Manufacturing cost modeling, sensitivity analysis, VA/VE roadmaps." data-cn="60+材料实时价格库，BOM自动计算，制造成本建模，敏感性分析，VA/VE降本路线。">Real-time BOM engine, 60+ materials, VA/VE roadmaps.</p>
       </div>

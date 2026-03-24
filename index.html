@@ -424,16 +424,16 @@ footer p{color:var(--text-muted);font-size:0.85rem;}
   <div class="form-box">
     <form id="contactForm">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-        <div class="fg"><label data-en="Name *" data-cn="姓名 *">Name *</label><input required></div>
-        <div class="fg"><label data-en="Company *" data-cn="公司 *">Company *</label><input required></div>
+        <div class="fg"><label data-en="Name *" data-cn="姓名 *">Name *</label><input name="name" required></div>
+        <div class="fg"><label data-en="Company *" data-cn="公司 *">Company *</label><input name="company" required></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-        <div class="fg"><label data-en="Email *" data-cn="邮箱 *">Email *</label><input type="email" required></div>
-        <div class="fg"><label data-en="Phone" data-cn="电话">Phone</label><input type="tel"></div>
+        <div class="fg"><label data-en="Email *" data-cn="邮箱 *">Email *</label><input name="email" type="email" required></div>
+        <div class="fg"><label data-en="Phone" data-cn="电话">Phone</label><input name="phone" type="tel"></div>
       </div>
       <div class="fg">
         <label data-en="Service Interest *" data-cn="服务类别 *">Service Interest *</label>
-        <select required>
+        <select name="service" required>
           <option value="" data-en="Select..." data-cn="请选择...">Select...</option>
           <option data-en="Cell Design" data-cn="电芯设计">Cell Design</option>
           <option data-en="Production Line" data-cn="产线规划">Production Line</option>
@@ -446,7 +446,7 @@ footer p{color:var(--text-muted);font-size:0.85rem;}
           <option data-en="Other" data-cn="其他">Other</option>
         </select>
       </div>
-      <div class="fg"><label data-en="Project Description *" data-cn="项目描述 *">Project Description *</label><textarea required></textarea></div>
+      <div class="fg"><label data-en="Project Description *" data-cn="项目描述 *">Project Description *</label><textarea name="description" required></textarea></div>
       <button type="submit" class="btn btn-glow" style="width:100%;padding:1rem;font-size:1.05rem;" data-en="Submit & Get Free AI Analysis →" data-cn="提交咨询 (含免费AI预分析) →">Submit & Get Free AI Analysis →</button>
     </form>
   </div>
@@ -464,16 +464,16 @@ footer p{color:var(--text-muted);font-size:0.85rem;}
   <div class="form-box">
     <form id="partnerForm">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-        <div class="fg"><label data-en="Company *" data-cn="公司名称 *">Company *</label><input required></div>
-        <div class="fg"><label data-en="Contact *" data-cn="联系人 *">Contact *</label><input required></div>
+        <div class="fg"><label data-en="Company *" data-cn="公司名称 *">Company *</label><input name="company" required></div>
+        <div class="fg"><label data-en="Contact *" data-cn="联系人 *">Contact *</label><input name="name" required></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-        <div class="fg"><label data-en="Email *" data-cn="邮箱 *">Email *</label><input type="email" required></div>
-        <div class="fg"><label data-en="Phone *" data-cn="电话 *">Phone *</label><input type="tel" required></div>
+        <div class="fg"><label data-en="Email *" data-cn="邮箱 *">Email *</label><input name="email" type="email" required></div>
+        <div class="fg"><label data-en="Phone *" data-cn="电话 *">Phone *</label><input name="phone" type="tel" required></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-        <div class="fg"><label data-en="Location *" data-cn="城市 *">Location *</label><input required></div>
-        <div class="fg"><label data-en="Size" data-cn="规模">Size</label><select><option value="">-</option><option>1-10</option><option>11-50</option><option>51-200</option><option>200+</option></select></div>
+        <div class="fg"><label data-en="Location *" data-cn="城市 *">Location *</label><input name="location" required></div>
+        <div class="fg"><label data-en="Size" data-cn="规模">Size</label><select name="size"><option value="">-</option><option>1-10</option><option>11-50</option><option>51-200</option><option>200+</option></select></div>
       </div>
       <div class="fg">
         <label data-en="Categories *" data-cn="服务类别 *">Categories *</label>
@@ -488,8 +488,8 @@ footer p{color:var(--text-muted);font-size:0.85rem;}
           <label><input type="checkbox" style="width:auto;margin-right:0.5rem;"><span data-en="Training" data-cn="培训">Training</span></label>
         </div>
       </div>
-      <div class="fg"><label data-en="Company Intro & Projects *" data-cn="公司介绍与案例 *">Company Intro & Projects *</label><textarea required></textarea></div>
-      <div class="fg"><label data-en="Website" data-cn="官网">Website</label><input placeholder="https://..."></div>
+      <div class="fg"><label data-en="Company Intro & Projects *" data-cn="公司介绍与案例 *">Company Intro & Projects *</label><textarea name="description" required></textarea></div>
+      <div class="fg"><label data-en="Website" data-cn="官网">Website</label><input name="portfolio" placeholder="https://..."></div>
       <button type="submit" class="btn btn-primary" style="width:100%;padding:1rem;font-size:1.05rem;" data-en="Submit Application →" data-cn="提交入驻申请 →">Submit Application →</button>
     </form>
   </div>
@@ -511,8 +511,29 @@ function toggleLang(){
   document.getElementById('langToggle').textContent=currentLang==='en'?'中文':'English';
   document.querySelectorAll('[data-en][data-cn]').forEach(el=>{el.textContent=el.getAttribute('data-'+currentLang);});
 }
-document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();alert('Thank you! We will contact you within 24 hours with a free AI pre-analysis.\n感谢咨询！24小时内回复，含免费AI预分析报告。');this.reset();});
-document.getElementById('partnerForm').addEventListener('submit',function(e){e.preventDefault();alert('Application received! Our team will review within 3 business days.\n申请已收到！3个工作日内审核。');this.reset();});
+const WORKER_URL='https://batteryai-form.simonyang20260322.workers.dev';
+async function submitForm(form,formType,successMsg){
+  const btn=form.querySelector('button[type=submit]');
+  const origText=btn.textContent;
+  btn.disabled=true;btn.textContent='Submitting...';
+  try{
+    const fd=new FormData(form);
+    const data={form_type:formType};
+    fd.forEach((v,k)=>{data[k]=v;});
+    // Collect checkboxes for partner categories
+    if(formType==='partner'){
+      const cats=[];
+      form.querySelectorAll('input[type=checkbox]:checked').forEach(cb=>{data.expertise=(data.expertise||'')+cb.parentElement.textContent.trim()+', ';});
+      if(data.expertise)data.expertise=data.expertise.slice(0,-2);
+    }
+    const res=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    if(res.ok){alert(successMsg);form.reset();}
+    else{alert('Submission failed. Please email contact@batteryaiglobal.com');}
+  }catch(err){alert('Network error. Please email contact@batteryaiglobal.com');}
+  finally{btn.disabled=false;btn.textContent=origText;}
+}
+document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();submitForm(this,'contact','Thank you! We will contact you within 24 hours with a free AI pre-analysis.\n\u611f\u8c22\u54a8\u8be2\uff0124\u5c0f\u65f6\u5185\u56de\u590d\uff0c\u542b\u514d\u8d39AI\u9884\u5206\u6790\u62a5\u544a\u3002');});
+document.getElementById('partnerForm').addEventListener('submit',function(e){e.preventDefault();submitForm(this,'partner','Application received! Our team will review within 3 business days.\n\u7533\u8bf7\u5df2\u6536\u5230\uff013\u4e2a\u5de5\u4f5c\u65e5\u5185\u5ba1\u6838\u3002');});
 </script>
 
 </body>
